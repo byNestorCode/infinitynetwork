@@ -73,7 +73,7 @@ export default function NavBar() {
                         </NavbarItem>
                         <DropdownMenu
                             aria-label="ACME features"
-                            className="w-[340px] bg-transparent"
+                            className="w-[340px]"
                             itemClasses={{
                                 base: "gap-4",
                             }}
@@ -116,9 +116,7 @@ export default function NavBar() {
                         </DropdownMenu>
                     </Dropdown>
                 </NavbarContent>
-            </NavbarContent>
-
-            <NavbarContent as="div" className="items-center" justify="end">
+                <NavbarContent as="div" className="items-center" justify="end">
                 <Input
                     classNames={{
                         base: "max-w-full sm:max-w-[10rem] h-10",
@@ -131,7 +129,23 @@ export default function NavBar() {
                     startContent={<SearchIcon size={18} />}
                     type="search"
                 />
-                {/* <Dropdown placement="bottom-end">
+                </NavbarContent>
+            </NavbarContent>
+
+            {/* <NavbarContent as="div" className="items-center" justify="end">
+                <Input
+                    classNames={{
+                        base: "max-w-full sm:max-w-[10rem] h-10",
+                        mainWrapper: "h-full",
+                        input: "text-small",
+                        inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                    }}
+                    placeholder="Type to search..."
+                    size="sm"
+                    startContent={<SearchIcon size={18} />}
+                    type="search"
+                />
+                <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <Avatar
                             isBordered
@@ -158,8 +172,10 @@ export default function NavBar() {
                             Log Out
                         </DropdownItem>
                     </DropdownMenu>
-                </Dropdown> */}
-                <NavbarMenu>
+                </Dropdown>
+                <Switcher />
+            </NavbarContent> */}
+            <NavbarMenu>
                     {menuItems.map((item, index) => (
                         <NavbarMenuItem key={`${item}-${index}`}>
                             <Link
@@ -182,8 +198,6 @@ export default function NavBar() {
                         </NavbarMenuItem>
                     ))}
                 </NavbarMenu>
-                {/* <Switcher /> */}
-            </NavbarContent>
         </Navbar>
     );
 }
