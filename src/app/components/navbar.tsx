@@ -1,26 +1,54 @@
-"user client";
+"use client";
 
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon";
+import Image from 'next/image';
+import { ChevronDown } from "./Icons";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 
 export default function NavBar() {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const menuItems = [
+        "Home",
+        "About",
+        "Pricing",
+        "Fundation",
+    ];
+
+    const icons = {
+        chevron: <ChevronDown fill="currentColor" size={16} />,
+    };
+
+    const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
     return (
-        <Navbar isBordered={true} isBlurred={true}>
+        <Navbar isBordered={true} isBlurred={true} onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent justify="start">
+                <NavbarMenuToggle
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    className="sm:hidden"
+                />
                 <NavbarBrand className="mr-4">
-                    <AcmeLogo />
+                    <Image
+                        src="/images/infinity/square_logo.svg"
+                        alt="hero image"
+                        width={50}
+                        height={50}
+                        className="mr-4"
+                    />
                     <p className="hidden sm:block font-bold text-inherit">Infinity Network</p>
                 </NavbarBrand>
                 <NavbarContent className="hidden sm:flex gap-3">
-                    <NavbarItem>
-                        <Link color="foreground" href="#">
+                    <NavbarItem isActive>
+                        <Link color="secondary" href="#">
                             Home
                         </Link>
                     </NavbarItem>
-                    <NavbarItem isActive>
-                        <Link href="#" aria-current="page" color="secondary">
+                    <NavbarItem>
+                        <Link href="#" aria-current="page" color="foreground">
                             About
                         </Link>
                     </NavbarItem>
@@ -29,11 +57,64 @@ export default function NavBar() {
                             Pricing
                         </Link>
                     </NavbarItem>
-                    <NavbarItem>
-                        <Link color="foreground" href="#">
-                            Integrations
-                        </Link>
-                    </NavbarItem>
+                    <Dropdown>
+                        <NavbarItem>
+                            <DropdownTrigger>
+                                <Button
+                                    disableRipple
+                                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-white"
+                                    endContent={icons.chevron}
+                                    radius="sm"
+                                    variant="light"
+                                >
+                                    Fundation
+                                </Button>
+                            </DropdownTrigger>
+                        </NavbarItem>
+                        <DropdownMenu
+                            aria-label="ACME features"
+                            className="w-[340px] bg-transparent"
+                            itemClasses={{
+                                base: "gap-4",
+                            }}
+                        >
+                            <DropdownItem
+                                key="autoscaling"
+                                description="ACME scales apps to meet user demand, automagically, based on load."
+                                startContent="{icons.scale}"
+                            >
+                                Autoscaling
+                            </DropdownItem>
+                            <DropdownItem
+                                key="usage_metrics"
+                                description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
+                                startContent="{icons.activity}"
+                            >
+                                Usage Metrics
+                            </DropdownItem>
+                            <DropdownItem
+                                key="production_ready"
+                                description="ACME runs on ACME, join us and others serving requests at web scale."
+                                startContent="{icons.flash}"
+                            >
+                                Production Ready
+                            </DropdownItem>
+                            <DropdownItem
+                                key="99_uptime"
+                                description="Applications stay on the grid with high availability and high uptime guarantees."
+                                startContent="{icons.server}"
+                            >
+                                +99% Uptime
+                            </DropdownItem>
+                            <DropdownItem
+                                key="supreme_support"
+                                description="Overcome any challenge with a supporting team ready to respond."
+                                startContent="{icons.user}"
+                            >
+                                +Supreme Support
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </NavbarContent>
             </NavbarContent>
 
@@ -50,7 +131,7 @@ export default function NavBar() {
                     startContent={<SearchIcon size={18} />}
                     type="search"
                 />
-                <Dropdown placement="bottom-end">
+                {/* <Dropdown placement="bottom-end">
                     <DropdownTrigger>
                         <Avatar
                             isBordered
@@ -59,7 +140,7 @@ export default function NavBar() {
                             color="secondary"
                             name="Jason Hughes"
                             size="sm"
-                            src="https://private-user-images.githubusercontent.com/37807244/243207357-7653d15b-ef99-4ea8-bd4d-16e6513f7d36.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjk2NDU2MjksIm5iZiI6MTcyOTY0NTMyOSwicGF0aCI6Ii8zNzgwNzI0NC8yNDMyMDczNTctNzY1M2QxNWItZWY5OS00ZWE4LWJkNGQtMTZlNjUxM2Y3ZDM2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMjMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDIzVDAxMDIwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYzZTlkNjMwNjY3Y2M5NjJlNTgxNmVhNjYyYzAxZjBiODEzMWVkNmI4Y2JlZThmOTQ1NzExMGNkMmJjNTRhYWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.VgUb13lk-RJC98NUwEbrjsgTsRYrEodW6SCkeM_nRdw"
+                            src="/images/infinity/square_logo.svg"
                         />
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Profile Actions" variant="flat">
@@ -77,7 +158,31 @@ export default function NavBar() {
                             Log Out
                         </DropdownItem>
                     </DropdownMenu>
-                </Dropdown>
+                </Dropdown> */}
+                <NavbarMenu>
+                    {menuItems.map((item, index) => (
+                        <NavbarMenuItem key={`${item}-${index}`}>
+                            <Link
+                                color={
+                                    index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                                }
+                                className="w-full"
+                                href="#"
+                                size="lg"
+                            >
+                                {item}
+                            </Link>
+                            { index === 3 ? (
+                                <Accordion variant="splitted">
+                                    <AccordionItem className="bg-purple-500 bg-opacity-30" key="1" aria-label="Fundation" title={<div style={{ textAlign: 'center', color: '' }}>♾️Foundation</div>}>
+                                        {defaultContent}
+                                    </AccordionItem>
+                                </Accordion>
+                            ): null }
+                        </NavbarMenuItem>
+                    ))}
+                </NavbarMenu>
+                {/* <Switcher /> */}
             </NavbarContent>
         </Navbar>
     );
