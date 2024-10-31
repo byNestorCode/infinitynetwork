@@ -3,19 +3,24 @@ import { NextUIProvider } from "@nextui-org/react";
 import NavBar from "./components/navbar";
 import HeroSection from './components/HeroSection';
 import BgGrid from './components/BgGrid';
+import AboutSection from './components/AboutSection';
+import About from "./components/About";
 
 export default function Home() {
   return (
     <NextUIProvider>
-      <main className="flex min-h-screen flex-col bg-[#121212]">
+      <main className="">
         <NavBar />
-        {/* <BgGrid /> */}
-        {/* <div className="container mt-24 mx-auto px-12 py-4"> */}
-        <div className="mx-auto my-auto px-4">
-          <div className="absolute inset-0 bg-[url(/images/grid.svg)] bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-10"></div>
-          <div className="absolute inset-0 bg-[url(/images/linear-bg.svg)] bg-cover bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-20"></div>
-          <HeroSection />
+        <div className="flex min-h-screen flex-col bg-[#121212]">
+          {/* <div className="container mt-24 mx-auto px-12 py-4"> */}
+          <div className="mx-auto my-auto px-4">
+            <div className="absolute inset-0 bg-[url(/images/grid.svg)] bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-10"></div>
+            <div className="absolute inset-0 bg-[url(/images/linear-bg.svg)] bg-cover bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-20"></div>
+            <HeroSection />
+          </div>
         </div>
+        {/* <AboutSection /> */}
+        <About />
       </main>
       {/* <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
