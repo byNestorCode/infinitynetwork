@@ -119,7 +119,7 @@ export default function NavBar() {
                     </Dropdown>
                     <NavbarItem>
                         <Link href="#" aria-current="page" color="foreground">
-                            Labs
+                            🧪Labs
                         </Link>
                     </NavbarItem>
                 </NavbarContent>
