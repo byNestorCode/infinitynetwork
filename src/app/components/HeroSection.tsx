@@ -3,6 +3,17 @@ import React from "react";
 import Image from 'next/image';
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import localFont from "next/font/local";
+
+const moonhouse = localFont({
+    src: '/../fonts/moonhouse.ttf',
+    variable: '--font-moonhouse',
+});
+
+const quango = localFont({
+    src: '/../fonts/Quango.otf',
+    variable: '--font-quango',
+});
 
 const HeroSection = () => {
     return (
@@ -30,20 +41,25 @@ const HeroSection = () => {
                             wrapper="span"
                             speed={30}
                             style={{
+                                /* fontFamily:"var(--font-moonhouse)", */
                                 fontSize:"1em",
                                 display:"inline-block",
                                 marginTop:"1rem",
                                 marginBottom:"1rem",
                             }}
                             repeat={Infinity}
+                            /* className={
+                                `${moonhouse.variable} uppercase tracking-[0.15em] font-bold`
+                            } */
                         />
                     </h1>
                     <p className="text-center text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-                        Lorem  ipsum dolor sit amet consectetur, adipisicing elit. Minus earum ipsa magnam itaque ex amet vitae, aliquid sapiente repudiandae esse.
+                        {/* Professionals in technological solutions and tools (Cloud, Web, Apps, Security, Consulting and Support). */}
+                        Anything you can dream of, we can make it happen (Cloud, Web, Apps, Security, Consulting and Support)
                     </p>
                     <div className="place-self-center">
-                        <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">Hire Me</button>
-                        <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-800 text-white mt-3"><span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">Download CV</span></button>
+                        <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">Contact Us</button>
+                        {/* <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-800 text-white mt-3"><span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">Download CV</span></button> */}
                     </div>
                 </div>
                 {/* <div className="col-span-5 place-self-center mt-4 lg:mt-0">
