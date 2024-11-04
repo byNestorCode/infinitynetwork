@@ -6,6 +6,17 @@ import { SearchIcon } from "./SearchIcon";
 import Image from 'next/image';
 import { ChevronDown } from "./Icons";
 import { Accordion, AccordionItem } from "@nextui-org/react";
+import localFont from "next/font/local";
+
+const moonhouse = localFont({
+    src: '/../fonts/moonhouse.ttf',
+    variable: '--font-moonhouse',
+});
+
+const quango = localFont({
+    src: '/../fonts/Quango.otf',
+    variable: '--font-quango',
+});
 
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -25,7 +36,7 @@ export default function NavBar() {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     return (
-        <Navbar isBordered={true} isBlurred={true} onMenuOpenChange={setIsMenuOpen}>
+        <Navbar isBordered={true} isBlurred={true} onMenuOpenChange={setIsMenuOpen} maxWidth="xl">
             <NavbarContent justify="start">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -39,9 +50,9 @@ export default function NavBar() {
                         height={50}
                         className="mr-4"
                     />
-                    <p className="hidden sm:block font-bold text-inherit">Infinity Network</p>
+                    <p className={`${moonhouse.variable} hidden sm:block font-bold text-inherit tracking-[0.25em] uppercase`} style={{ fontFamily: 'var(--font-moonhouse)'}}>Infinity Network</p>
                 </NavbarBrand>
-                <NavbarContent className="hidden sm:flex gap-3">
+                <NavbarContent className="hidden sm:flex gap-5">
                     <NavbarItem isActive>
                         <Link color="secondary" href="#">
                             Home
@@ -54,67 +65,63 @@ export default function NavBar() {
                     </NavbarItem>
                     <NavbarItem>
                         <Link color="foreground" href="#">
-                            Pricing
+                            Services
                         </Link>
                     </NavbarItem>
-                    <Dropdown>
+                    <NavbarItem>
+                        <Link href="#" aria-current="page" color="foreground">
+                            Contact
+                        </Link>
+                    </NavbarItem>
+                    <Dropdown className="bg-gray-800 bg-opacity-85">
                         <NavbarItem>
                             <DropdownTrigger>
-                                <Button
-                                    disableRipple
-                                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-white"
-                                    endContent={icons.chevron}
-                                    radius="sm"
-                                    variant="light"
-                                >
-                                    Fundation
-                                </Button>
+                                    <Button
+                                        disableRipple
+                                        className="p-0 bg-transparent data-[hover=true]:bg-transparent text-white"
+                                        endContent={icons.chevron}
+                                        radius="sm"
+                                        variant="light"
+                                    >
+                                        Fundation
+                                    </Button>
                             </DropdownTrigger>
                         </NavbarItem>
                         <DropdownMenu
                             aria-label="ACME features"
-                            className="w-[340px]"
+                            className="w-[340px] bg-transparent"
                             itemClasses={{
-                                base: "gap-4",
+                                base: "gap-4 text-white data-[hover=true]:bg-gradient-to-br data-[hover=true]:from-blue-500 data-[hover=true]:via-purple-500 data-[hover=true]:to-pink-500 data-[hover=true]:text-white",
                             }}
                         >
                             <DropdownItem
-                                key="autoscaling"
-                                description="ACME scales apps to meet user demand, automagically, based on load."
+                                key="Woman"
+                                description="Powerful woman in technology."
                                 startContent="{icons.scale}"
                             >
-                                Autoscaling
+                                Woman
                             </DropdownItem>
                             <DropdownItem
-                                key="usage_metrics"
-                                description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
+                                key="weekend"
+                                description="3 days of science and fun!"
                                 startContent="{icons.activity}"
                             >
-                                Usage Metrics
+                                Weekend
                             </DropdownItem>
                             <DropdownItem
                                 key="production_ready"
-                                description="ACME runs on ACME, join us and others serving requests at web scale."
+                                description="an out-of-orbit camp full of unique experiences "
                                 startContent="{icons.flash}"
                             >
-                                Production Ready
-                            </DropdownItem>
-                            <DropdownItem
-                                key="99_uptime"
-                                description="Applications stay on the grid with high availability and high uptime guarantees."
-                                startContent="{icons.server}"
-                            >
-                                +99% Uptime
-                            </DropdownItem>
-                            <DropdownItem
-                                key="supreme_support"
-                                description="Overcome any challenge with a supporting team ready to respond."
-                                startContent="{icons.user}"
-                            >
-                                +Supreme Support
+                                Camp
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
+                    <NavbarItem>
+                        <Link href="#" aria-current="page" color="foreground">
+                            Labs
+                        </Link>
+                    </NavbarItem>
                 </NavbarContent>
                 <NavbarContent as="div" className="items-center" justify="end">
                 <Input
