@@ -22,10 +22,12 @@ export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
-        "Home",
-        "About",
-        "Pricing",
-        "Fundation",
+        "🚀 Home",
+        "❓ About",
+        "⚙️ Services",
+        "📕 Contact",
+        "🧪 Labs",
+        "",
     ];
 
     const icons = {
@@ -185,23 +187,46 @@ export default function NavBar() {
             <NavbarMenu>
                     {menuItems.map((item, index) => (
                         <NavbarMenuItem key={`${item}-${index}`}>
-                            <Link
-                                color={
-                                    index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                                }
-                                className="w-full"
+                            
+                            { index === 5 ? (
+                                <Accordion variant="splitted" className="px-0">
+                                    <AccordionItem className="bg-purple-500 bg-opacity-30" key="1" aria-label="Fundation" title={<div style={{ textAlign: 'center', color: '' }}>♾️ Foundation</div>}>
+                                    <Link
+                                        color="foreground"
+                                        className="w-full px-4 mt-3 justify-center border rounded-lg"
+                                        href="#"
+                                        size="lg"
+                                    >
+                                        Woman   
+                                    </Link>
+                                    <Link
+                                        color="foreground"
+                                        className="w-full px-4 mt-3 justify-center border rounded-lg"
+                                        href="#"
+                                        size="lg"
+                                    >
+                                        Weekend   
+                                    </Link>
+                                    <Link
+                                        color="foreground"
+                                        className="w-full px-4 mt-3 justify-center border rounded-lg"
+                                        href="#"
+                                        size="lg"
+                                    >
+                                        Camp   
+                                    </Link>
+                                    </AccordionItem>
+                                </Accordion>
+                            ): (
+                                <Link
+                                color="foreground"
+                                className="w-full px-4 shadow-medium rounded-medium bg-purple-500 bg-opacity-30 flex py-4 h-full gap-3 items-center tap-highlight-transparent outline-none transition-opacity justify-center"
                                 href="#"
                                 size="lg"
                             >
                                 {item}
                             </Link>
-                            { index === 3 ? (
-                                <Accordion variant="splitted">
-                                    <AccordionItem className="bg-purple-500 bg-opacity-30" key="1" aria-label="Fundation" title={<div style={{ textAlign: 'center', color: '' }}>♾️Foundation</div>}>
-                                        {defaultContent}
-                                    </AccordionItem>
-                                </Accordion>
-                            ): null }
+                            ) }
                         </NavbarMenuItem>
                     ))}
                 </NavbarMenu>
