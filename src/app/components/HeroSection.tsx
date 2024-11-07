@@ -59,7 +59,7 @@ const HeroSection = () => {
                                     scale: { duration: 1, ease: 'easeInOut' }, 
                                     filter: { duration: 1, ease: 'easeInOut' },
                                 }}
-                                className="mt-6 sm:h-[70px]"
+                                className="mt-6 sm:h-[70px] md:h-[70px] lg:h-[70px] h-[70px]"
                             >
                                 {words[currentWordIndex]}
                             </motion.div>
