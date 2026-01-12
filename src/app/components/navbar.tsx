@@ -36,7 +36,7 @@ export default function NavBar() {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     return (
-        <Navbar isBordered={true} isBlurred={true} onMenuOpenChange={setIsMenuOpen} maxWidth="xl">
+        <Navbar isBordered={false} isBlurred={true} onMenuOpenChange={setIsMenuOpen} maxWidth="2xl">
             <NavbarContent justify="start">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -50,7 +50,7 @@ export default function NavBar() {
                         height={50}
                         className="mr-4"
                     />
-                    <p className={`${moonhouse.variable} hidden sm:block font-bold text-inherit tracking-[0.25em] uppercase`} style={{ fontFamily: 'var(--font-moonhouse)'}}>Infinity Network</p>
+                    <p className={`${moonhouse.variable} hidden sm:block font-bold text-inherit tracking-[0.25em] uppercase`} style={{ fontFamily: 'var(--font-moonhouse)'}}>Infinity Fundation</p>
                 </NavbarBrand>
                 <NavbarContent className="hidden sm:flex gap-5">
                     <NavbarItem isActive>

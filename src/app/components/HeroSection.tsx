@@ -31,9 +31,9 @@ const HeroSection = () => {
                                 1000,
                                 '⚛️ Science',
                                 1000,
-                                '🧠 Technology Artists',
+                                '🧠 Technology',
                                 1000,
-                                '🚀 The Future',
+                                '🚀 Future',
                                 1000,
                                 '🪐 Infinity Network',
                                 1000
