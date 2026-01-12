@@ -5,10 +5,11 @@ import HeroSection from './components/HeroSection';
 import BgGrid from './components/BgGrid';
 import AboutSection from './components/AboutSection';
 import About from "./components/About";
+import { Providers } from "./components/Providers";
 
 export default function Home() {
   return (
-    <NextUIProvider>
+    <Providers>
       <main className="">
         <NavBar />
         <div className="flex min-h-screen flex-col bg-[#121212]">
@@ -117,6 +118,6 @@ export default function Home() {
           </a>
         </footer>
       </div> */}
-    </NextUIProvider>
+    </Providers>
   );
 }
