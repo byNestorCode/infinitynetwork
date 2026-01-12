@@ -6,6 +6,7 @@ import BgGrid from './components/BgGrid';
 import AboutSection from './components/AboutSection';
 import About from "./components/About";
 import { Providers } from "./components/Providers";
+import Particles from "./components/Particles";
 
 export default function Home() {
   return (
@@ -15,8 +16,20 @@ export default function Home() {
         <div className="flex min-h-screen flex-col bg-[#121212]">
           {/* <div className="container mt-24 mx-auto px-12 py-4"> */}
           <div className="mx-auto my-auto px-4">
-            <div className="absolute inset-0 bg-[url(/images/grid.svg)] bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-10"></div>
-            <div className="absolute inset-0 bg-[url(/images/linear-bg.svg)] bg-cover bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-20"></div>
+            <div className="absolute inset-0 z-10">
+              <Particles
+                particleColors={['#ffffff', '#ffffff']}
+                particleCount={200}
+                particleSpread={10}
+                speed={0.01}
+                particleBaseSize={100}
+                moveParticlesOnHover={false}
+                alphaParticles={false}
+                disableRotation={false}
+              />
+            </div>
+            <div className="absolute inset-0 bg-[url(/images/grid.svg)] bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-20"></div>
+            <div className="absolute inset-0 bg-[url(/images/linear-bg.svg)] bg-cover bg-center [mask-image:linear-gradient(180deg,black,rgba(0,0,0,0))] z-30"></div>
             <HeroSection />
           </div>
         </div>
