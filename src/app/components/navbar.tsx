@@ -48,7 +48,7 @@ export default function NavBar() {
                         alt="hero image"
                         width={50}
                         height={50}
-                        className="mr-4"
+                        className="mr-4 rotate-[-15deg]"
                     />
                     <p className={`${moonhouse.variable} hidden sm:block font-bold text-inherit tracking-[0.25em] uppercase`} style={{ fontFamily: 'var(--font-moonhouse)'}}>Infinity Fundation</p>
                 </NavbarBrand>
