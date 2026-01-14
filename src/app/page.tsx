@@ -13,7 +13,7 @@ export default function Home() {
     <Providers>
       <main className="">
         <NavBar />
-        <div className="flex min-h-screen flex-col bg-[#121212]">
+        <div className="flex min-h-screen flex-col bg-[#050505]">
           {/* <div className="container mt-24 mx-auto px-12 py-4"> */}
           <div className="mx-auto my-auto px-4">
             <div className="absolute inset-0 z-10">
@@ -21,7 +21,7 @@ export default function Home() {
                 particleColors={['#ffffff', '#ffffff']}
                 particleCount={200}
                 particleSpread={10}
-                speed={0.01}
+                speed={0.03}
                 particleBaseSize={100}
                 moveParticlesOnHover={false}
                 alphaParticles={false}
